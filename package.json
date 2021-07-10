@@ -1,0 +1,9 @@
+{
+  "name": "list_editor",
+  "version": "1.0.0",
+  "description": "list editor",
+  "main": "index.js",
+  "repository": "https://github.com/Yushkevich-A-A/list_editor.git",
+  "author": "Yushkevich-A-A <Mortifer1993@yandex.ru>",
+  "license": "MIT"
+}
