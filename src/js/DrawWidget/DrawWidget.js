@@ -39,7 +39,7 @@ export default class DrawWidget {
                                   </li>
                                 </ul>
                               </div>`;
-    document.body.appendChild(this.widget);
+    this.container.appendChild(this.widget);
     this.rowData = document.querySelector('.data');
   }
 
@@ -91,7 +91,7 @@ export default class DrawWidget {
                           </div>`;
 
     this.popup.appendChild(this.form);
-    document.body.appendChild(this.popup);
+    this.container.appendChild(this.popup);
 
     this.inputName = document.querySelector('.input-name');
     this.inputCost = document.querySelector('.input-cost');
