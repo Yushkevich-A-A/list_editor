@@ -8,4 +8,4 @@ test('test function of present number', () => {
   const expected = '5 000 000 000';
 
   expect(result).toBe(expected);
-})
+});

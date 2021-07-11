@@ -6,15 +6,15 @@ export default class WidgetController {
     this.error = error;
     this.widget = widget;
     this.arr = [
-      {name: 'iphone6', cost: 50000},
-      {name: 'MI', cost: 9000}
+      { name: 'iphone6', cost: 50000 },
+      { name: 'MI', cost: 9000 },
     ];
     this.init();
   }
 
   init() {
     this.drawList();
-    this.addListeners()
+    this.addListeners();
   }
 
   drawList() {
@@ -22,30 +22,30 @@ export default class WidgetController {
   }
 
   addListeners() {
-    document.addEventListener('click', event => {
+    document.addEventListener('click', (event) => {
       event.preventDefault();
-      if(event.target.closest('.cancel')) {
+      if (event.target.closest('.cancel')) {
         this.widget.closePopup();
       }
-      if(event.target.closest('.add-item')) {
+      if (event.target.closest('.add-item')) {
         this.widget.openPopup('add');
       }
-      if(event.target.closest('.save')) {
+      if (event.target.closest('.save')) {
         this.error.deleteError();
         this.checkValidate();
       }
-      if(event.target.closest('.edit-item')) {
+      if (event.target.closest('.edit-item')) {
         this.drawEditPopup(event.target.closest('.row-data'));
       }
-      if(event.target.closest('.delete-item')) {
+      if (event.target.closest('.delete-item')) {
         this.deleteElement = event.target.closest('.row-data');
         this.confirmDelete.windowConfirm(this.deleteElement);
       }
-      if(event.target.closest('.button-conf')) {
+      if (event.target.closest('.button-conf')) {
         this.delete(this.deleteElement);
         this.confirmDelete.windowHid();
       }
-      if(event.target.closest('.button-canc')) {
+      if (event.target.closest('.button-canc')) {
         this.deleteElement = null;
         this.confirmDelete.windowHid();
       }
@@ -53,7 +53,7 @@ export default class WidgetController {
   }
 
   delete(element) {
-    const index = this.arr.findIndex( item => item.name === element.dataset.name)
+    const index = this.arr.findIndex((item) => item.name === element.dataset.name);
     this.arr.splice(index, 1);
     this.deleteElement = null;
     this.drawList();
@@ -74,14 +74,14 @@ export default class WidgetController {
   }
 
   drawEditPopup(element) {
-    this.editElement = this.arr.find(item => item.name.toLowerCase() === element.dataset.name);
+    this.editElement = this.arr.find((item) => item.name.toLowerCase() === element.dataset.name);
     this.widget.openPopup('edit');
     this.widget.inputName.value = this.editElement.name;
     this.widget.inputCost.value = this.editElement.cost;
   }
 
   submitItem(form) {
-    const type = form.dataset.type;
+    const { type } = form.dataset;
     if (type === 'add') {
       this.addItem();
     }
@@ -92,13 +92,13 @@ export default class WidgetController {
   }
 
   checkValidate() {
-    const form = this.widget.form;
-    const first= [...form.elements].find(item=>!item.validity.valid);
+    const { form } = this.widget;
+    const first = [...form.elements].find((item) => !item.validity.valid);
     if (first) {
       this.error.createError(first, 'Поле не должно быть пустым');
       return;
     }
-    const inputCost = this.widget.inputCost
+    const { inputCost } = this.widget;
     if (isNaN(+inputCost.value)) {
       this.error.createError(inputCost, 'Введите число');
       return;

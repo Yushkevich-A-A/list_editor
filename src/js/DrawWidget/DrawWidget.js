@@ -2,7 +2,7 @@ import './DrawWidget.css';
 
 export default class DrawWidget {
   constructor(container = null) {
-    this.container = container
+    this.container = container;
     this.drawWidget();
     this.drawPopup();
   }
@@ -34,14 +34,14 @@ export default class DrawWidget {
                                     </ul>
                                   </li>
                                 </ul>
-                              </div>`
+                              </div>`;
     document.body.appendChild(this.widget);
-    this.rowData = document.querySelector(".data");
+    this.rowData = document.querySelector('.data');
   }
 
   drawWidgetList(list) {
     this.rowData.innerHTML = '';
-    for(let i of list) {
+    for (const i of list) {
       const li = document.createElement('li');
       li.classList.add('item', 'row-data');
       li.dataset.name = i.name.toLowerCase();
@@ -55,20 +55,20 @@ export default class DrawWidget {
                       <div class="item-title action">
                         <div class="edit-item"></div>
                         <div class="delete-item"></div>
-                      </div>`
+                      </div>`;
       this.rowData.appendChild(li);
 
-      const name = li.querySelector('.name-text')
+      const name = li.querySelector('.name-text');
       name.textContent = i.name;
 
-      const cost = li.querySelector('.cost-text')
+      const cost = li.querySelector('.cost-text');
       cost.textContent = this.drawNumberFormat(i.cost);
     }
   }
 
   drawPopup() {
     this.popup = document.createElement('div');
-    this.popup.classList.add('popup','disable');//
+    this.popup.classList.add('popup', 'disable');//
 
     this.form = document.createElement('form');
     this.form.classList.add('form');
@@ -105,8 +105,8 @@ export default class DrawWidget {
     this.form.dataset.type = valueDataSet;
     this.popup.classList.remove('disable');
   }
-  
+
   drawNumberFormat(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");// Сознаюсь!! регулярку подсмотрел в интернете!
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');// Сознаюсь!! регулярку подсмотрел в интернете!
   }
 }

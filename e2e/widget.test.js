@@ -66,7 +66,7 @@ describe('creating button, click button and appearence of a hint', () => {
     await page.click('.save');
     await page.waitForSelector('.form-error');
     const error1 = await page.$('.form-error');
-    const value1 = await page.evaluate(err => err.innerText, error1);
+    const value1 = await page.evaluate((err) => err.innerText, error1);
     expect(value1).toBe('Поле не должно быть пустым');
   });
 
@@ -80,7 +80,7 @@ describe('creating button, click button and appearence of a hint', () => {
     await page.click('.save');
     await page.waitForSelector('.form-error');
     const error1 = await page.$('.form-error');
-    const value1 = await page.evaluate(err => err.innerText, error1);
+    const value1 = await page.evaluate((err) => err.innerText, error1);
     expect(value1).toBe('Поле не должно быть пустым');
   });
 
@@ -94,7 +94,7 @@ describe('creating button, click button and appearence of a hint', () => {
     await page.click('.save');
     await page.waitForSelector('.form-error');
     const error1 = await page.$('.form-error');
-    const value1 = await page.evaluate(err => err.innerText, error1);
+    const value1 = await page.evaluate((err) => err.innerText, error1);
     expect(value1).toBe('Введите число больше 0');
   });
 
@@ -108,7 +108,7 @@ describe('creating button, click button and appearence of a hint', () => {
     await page.click('.save');
     await page.waitForSelector('.form-error');
     const error1 = await page.$('.form-error');
-    const value1 = await page.evaluate(err => err.innerText, error1);
+    const value1 = await page.evaluate((err) => err.innerText, error1);
     expect(value1).toBe('Не вводите космические числа');
   });
 
@@ -142,8 +142,8 @@ describe('creating button, click button and appearence of a hint', () => {
     await button.click();
     const confirmDelete = await page.$('.button-conf');
     await confirmDelete.click();
-    await page.waitForSelector('.window-confirm', {hidden: true});
-    await page.waitForSelector('.row-data[data-name="honor"]', {hidden: true});
+    await page.waitForSelector('.window-confirm', { hidden: true });
+    await page.waitForSelector('.row-data[data-name="honor"]', { hidden: true });
   });
 
   test('click button detete item, waiting confirm window and not delete item', async () => {
@@ -160,7 +160,7 @@ describe('creating button, click button and appearence of a hint', () => {
     await button.click();
     const confirmDelete = await page.$('.button-canc');
     await confirmDelete.click();
-    await page.waitForSelector('.window-confirm', {hidden: true});
+    await page.waitForSelector('.window-confirm', { hidden: true });
     await page.waitForSelector('.row-data[data-name="honor"]');
   });
 
@@ -196,8 +196,8 @@ describe('creating button, click button and appearence of a hint', () => {
     await page.waitForSelector('.popup');
     await page.type('.input-name', '5');
     await page.click('.save');
-    await page.waitForSelector('.window-confirm', {hidden: true});
-    await page.waitForSelector('.row-data[data-name="honor"]', {hidden: true});
+    await page.waitForSelector('.window-confirm', { hidden: true });
+    await page.waitForSelector('.row-data[data-name="honor"]', { hidden: true });
     await page.waitForSelector('.row-data[data-name="honor5"]');
   });
 
@@ -217,8 +217,8 @@ describe('creating button, click button and appearence of a hint', () => {
     await page.waitForSelector('.popup');
     await page.type('.input-name', '5');
     await page.click('.cancel');
-    await page.waitForSelector('.window-confirm', {hidden: true});
+    await page.waitForSelector('.window-confirm', { hidden: true });
     await page.waitForSelector('.row-data[data-name="honor"]');
-    await page.waitForSelector('.row-data[data-name="honor5"]', {hidden: true});
+    await page.waitForSelector('.row-data[data-name="honor5"]', { hidden: true });
   });
 });
