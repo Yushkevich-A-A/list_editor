@@ -1,8 +1,14 @@
 export default class DrawWidget {
   constructor(container = null) {
     this.container = container;
-    this.drawWidget();
-    this.drawPopup();
+    this.init();
+  }
+
+  init() {
+    if (this.container != null) {
+      this.drawWidget();
+      this.drawPopup();
+    }
   }
 
   drawWidget() {
