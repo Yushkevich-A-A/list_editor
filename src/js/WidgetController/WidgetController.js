@@ -1,5 +1,3 @@
-import './WidgetController.css';
-
 export default class WidgetController {
   constructor(widget, error, confirm) {
     this.confirmDelete = confirm;

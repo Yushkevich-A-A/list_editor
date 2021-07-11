@@ -1,5 +1,3 @@
-import './DrawWidget.css';
-
 export default class DrawWidget {
   constructor(container = null) {
     this.container = container;

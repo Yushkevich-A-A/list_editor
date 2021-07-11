@@ -1,5 +1,3 @@
-import './WidgetWindowConfirm.css';
-
 export default class WidgetWindowConfirm {
   constructor() {
   }
