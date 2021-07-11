@@ -1,16 +1,10 @@
-// import './DrawWidget.css';
+import './DrawWidget.css';
 
 export default class DrawWidget {
   constructor(container = null) {
     this.container = container
-    this.init();
-  }
-
-  init() {
-    if (this.container !== null) {
-      this.drawWidget();
-      this.drawPopup();
-    }
+    this.drawWidget();
+    this.drawPopup();
   }
 
   drawWidget() {
@@ -50,10 +44,10 @@ export default class DrawWidget {
     for(let i of list) {
       const li = document.createElement('li');
       li.classList.add('item', 'row-data');
-      li.dataset.name = i.name;
+      li.dataset.name = i.name.toLowerCase();
       li.dataset.cost = i.cost;
       li.innerHTML = `<div class="item-title name">
-                        <p class="name-text text">Название</p>
+                        <p class="name-text text"></p>
                       </div>
                       <div class="item-title cost">
                         <p class="cost-text text"></p>

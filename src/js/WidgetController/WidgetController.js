@@ -74,7 +74,7 @@ export default class WidgetController {
   }
 
   drawEditPopup(element) {
-    this.editElement = this.arr.find(item => item.name === element.dataset.name);
+    this.editElement = this.arr.find(item => item.name.toLowerCase() === element.dataset.name);
     this.widget.openPopup('edit');
     this.widget.inputName.value = this.editElement.name;
     this.widget.inputCost.value = this.editElement.cost;
