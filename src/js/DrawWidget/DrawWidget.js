@@ -1,9 +1,16 @@
-import './DrawWidget.css'
+// import './DrawWidget.css';
 
 export default class DrawWidget {
-  constructor() {
-    this.drawWidget();
-    this.drawPopup();
+  constructor(container = null) {
+    this.container = container
+    this.init();
+  }
+
+  init() {
+    if (this.container !== null) {
+      this.drawWidget();
+      this.drawPopup();
+    }
   }
 
   drawWidget() {

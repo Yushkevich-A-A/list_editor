@@ -1,9 +1,7 @@
 import './WidgetError.css';
 
 export default class WidgetError {
-  constructor() {
-
-  }
+  constructor() {}
 
   createError(element, textError) {
     element.focus();

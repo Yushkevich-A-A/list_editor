@@ -35,11 +35,7 @@ export default class WidgetController {
         this.checkValidate();
       }
       if(event.target.closest('.edit-item')) {
-        const element = event.target.closest('.row-data');
-        this.editElement = this.arr.find(item => item.name === element.dataset.name)
-        this.widget.openPopup('edit');
-        this.widget.inputName.value = this.editElement.name;
-        this.widget.inputCost.value = this.editElement.cost;
+        this.drawEditPopup(event.target.closest('.row-data'));
       }
       if(event.target.closest('.delete-item')) {
         this.deleteElement = event.target.closest('.row-data');
@@ -77,11 +73,19 @@ export default class WidgetController {
     this.drawList();
   }
 
-  submitItem(typeForm) {
-    if (typeForm === 'add') {
+  drawEditPopup(element) {
+    this.editElement = this.arr.find(item => item.name === element.dataset.name);
+    this.widget.openPopup('edit');
+    this.widget.inputName.value = this.editElement.name;
+    this.widget.inputCost.value = this.editElement.cost;
+  }
+
+  submitItem(form) {
+    const type = form.dataset.type;
+    if (type === 'add') {
       this.addItem();
     }
-    if (typeForm === 'edit') {
+    if (type === 'edit') {
       this.editItem();
     }
     this.widget.closePopup();
@@ -94,19 +98,19 @@ export default class WidgetController {
       this.error.createError(first, 'Поле не должно быть пустым');
       return;
     }
-    if (isNaN(+this.widget.inputCost.value)) {
-      this.error.createError(this.widget.inputCost, 'Введите число');
+    const inputCost = this.widget.inputCost
+    if (isNaN(+inputCost.value)) {
+      this.error.createError(inputCost, 'Введите число');
       return;
     }
-    if (+this.widget.inputCost.value === 0) {
-      this.error.createError(this.widget.inputCost, 'Ведите число больше 0');
+    if (+inputCost.value === 0) {
+      this.error.createError(inputCost, 'Введите число больше 0');
       return;
     }
-    if (+this.widget.inputCost.value > 5000000000) {
-      this.error.createError(this.widget.inputCost, 'Не вводите космические числа');
+    if (+inputCost.value > 5000000000) {
+      this.error.createError(inputCost, 'Не вводите космические числа');
       return;
     }
-    this.submitItem(form.dataset.type);
+    this.submitItem(form);
   }
-
 }
