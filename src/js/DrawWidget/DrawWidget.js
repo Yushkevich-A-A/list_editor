@@ -5,7 +5,7 @@ export default class DrawWidget {
   }
 
   init() {
-    if (document != null) {
+    if (this.container != null) {
       this.drawWidget();
       this.drawPopup();
     }
